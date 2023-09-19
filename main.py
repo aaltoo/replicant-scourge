@@ -1,4 +1,5 @@
 import os
+import pathlib
 
 def make_kgrams(s, k):
     grams = []
@@ -48,7 +49,7 @@ def output_fingerprint(fingerprints, kgrams):
 
 k, t = 5, 8
 
-f = open("input.py", "r")
+f = open("input/input.py", "r")
 input_file = f.read()
 f.close()
 
@@ -56,20 +57,19 @@ k_grams = make_kgrams(input_file, k)
 fingerprints = winnow(k_grams, k, t)
 set_fingerprints = set(output_fingerprint(fingerprints, k_grams))
 
-match_set = set(fingerprints)
-
 file_list = os.listdir('./samples')
 
 for file in file_list:
-    f_r = open("samples/" + file, "r")
-    input_file_r = f_r.read()
-    f_r.close()
-    k_grams = make_kgrams(input_file_r, k)
-    fingerprints_r = winnow(k_grams, k, t)
-    set_fingerprints_r = set(output_fingerprint(fingerprints_r, k_grams))
+    if file.endswith(pathlib.Path('./input.py').suffix):
+        f_r = open("samples/" + file, "r")
+        input_file_r = f_r.read()
+        f_r.close()
+        k_grams = make_kgrams(input_file_r, k)
+        fingerprints_r = winnow(k_grams, k, t)
+        set_fingerprints_r = set(output_fingerprint(fingerprints_r, k_grams))
 
-    unique_set_fingerprints = set_fingerprints.intersection(set_fingerprints_r)
+        unique_set_fingerprints = set_fingerprints.intersection(set_fingerprints_r)
 
-    print('совпадение', round(len(unique_set_fingerprints) / len(set_fingerprints) * 100, 2), '%')
+        print('совпадение', round(len(unique_set_fingerprints) / len(set_fingerprints) * 100, 2), '%')
 
 
