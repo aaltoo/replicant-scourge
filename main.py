@@ -6,6 +6,6 @@ f1.close()
 
 f2 = open("samples/tg_x.py", "r")
 input_file2 = f2.read()
-f1.close()
+f2.close()
 
 print(fc.file_compare(input_file1, input_file2))
