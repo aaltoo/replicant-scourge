@@ -8,8 +8,8 @@ def tenth_function(x, x_0, iterations):
 
     h = 0.0001
 
-    # F(x) = tg(x) равняется sec^2(x)
-    # sec^2(x) равняется 1 / cos^2(x)
+    #F(x) = tg(x) равняется sec^2(x)
+    #sec^2(x) равняется 1 / cos^2(x)
 
     tan_derivative = 1 / (math.cos(x_0) * math.cos(x_0))
 
