@@ -11,8 +11,8 @@ f2.close()
 
 print(fc.file_compare(input_file1, input_file2))
 
-f3 = open("samples/sum.py", "r")
+f3 = open("samples/sum.js", "r")
 input_file3 = f3.read()
 f3.close()
 
-print(helpers.remove_comments(input_file3, "py"))
+print(helpers.remove_comments(input_file3, "js"))
